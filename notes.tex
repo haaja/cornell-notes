@@ -1,0 +1,86 @@
+\documentclass[a4paper]{article}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\title{
+\vspace{-3em}
+\begin{tcolorbox}
+\Huge\sffamily Cornell Notes on Something
+\end{tcolorbox}
+\vspace{-3em}
+}
+
+\date{}
+
+\usepackage{background}
+\SetBgScale{1}
+\SetBgAngle{0}
+\SetBgColor{red}
+\SetBgContents{\rule[0em]{4pt}{\textheight}}
+\SetBgHshift{-2.3cm}
+\SetBgVshift{0cm}
+\usepackage{lipsum}% just to generate filler text for the example
+\usepackage[margin=2cm]{geometry}
+\usepackage{lipsum}% just to generate dummy text for the example
+
+
+%\url{http://tex.stackexchange.com/a/314/86}
+
+\makeatletter
+\def\cornell{\@ifnextchar[{\@with}{\@without}}
+\def\@with[#1]#2#3{
+\begin{tcolorbox}[enhanced,colback=gray,colframe=black,fonttitle=\large\bfseries\sffamily,sidebyside=true, nobeforeafter,before=\vfil,after=\vfil,colupper=blue,sidebyside align=top, lefthand width=.3\textwidth,
+opacityframe=0,opacityback=.3,opacitybacktitle=1, opacitytext=1,
+segmentation style={black!55,solid,opacity=0,line width=3pt},
+title=#1
+]
+\begin{tcolorbox}[colback=red!05,colframe=red!25,sidebyside align=top,
+width=\textwidth,nobeforeafter]#2\end{tcolorbox}%
+\tcblower
+\sffamily
+\begin{tcolorbox}[colback=blue!05,colframe=blue!10,width=\textwidth,nobeforeafter]
+#3
+\end{tcolorbox}
+\end{tcolorbox}
+}
+\def\@without#1#2{
+\begin{tcolorbox}[enhanced,colback=white!15,colframe=white,fonttitle=\bfseries,sidebyside=true, nobeforeafter,before=\vfil,after=\vfil,colupper=blue,sidebyside align=top, lefthand width=.3\textwidth,
+opacityframe=0,opacityback=0,opacitybacktitle=0, opacitytext=1,
+segmentation style={black!55,solid,opacity=0,line width=3pt}
+]
+
+\begin{tcolorbox}[colback=red!05,colframe=red!25,sidebyside align=top,
+width=\textwidth,nobeforeafter]#1\end{tcolorbox}%
+\tcblower
+\sffamily
+\begin{tcolorbox}[colback=blue!05,colframe=blue!10,width=\textwidth,nobeforeafter]
+#2
+\end{tcolorbox}
+\end{tcolorbox}
+}
+\makeatother
+
+\parindent=0pt
+
+%\newcommand{\cornell}[2]{%
+%}
+
+%\AddEverypageHook{
+%\hspace{.3\textwidth}\vrule width 3pt depth .4\textheight
+%\vspace{-\textheight}}
+
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+
+\begin{document}
+\maketitle
+\SetBgContents{\rule[0em]{4pt}{\textheight}}
+
+\cornell{Research question}{\lipsum*[2]}
+\cornell{Another research question}{\lipsum*[5]}
+\cornell[A fancy very important question]{Thi is easy to write?}{Even without \LyX{}, is not too hard fill this template, but you must compile twice.}
+\cornell{Another research question very long for one line.}{\lipsum*[1]}
+\cornell{Do you want fill much more than a page}{No problem. \lipsum*[3]}
+\cornell{More?}{No problem. \lipsum*[3-4]}
+
+\cornell[Last question]{This is the end?}{Yes.}
+\end{document}
